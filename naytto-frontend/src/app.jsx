@@ -1,5 +1,6 @@
 import { useState /* useEffect */ } from "react";
 import HomePage from "./components/HomePage";
+import BlogsPage from "./components/BlogsPage";
 import {
   BrowserRouter as Router,
   Routes,
@@ -53,6 +54,14 @@ const App = () => {
             element={
               <>
                 <HomePage />
+              </>
+            }
+          />
+                    <Route
+            path="/blogs"
+            element={
+              <>
+                <BlogsPage />
               </>
             }
           />

@@ -1,0 +1,20 @@
+### Get all
+GET http://localhost:3001/blogPosts
+
+###
+
+### Add new
+POST http://localhost:3001/blogPosts
+Content-Type: application/json
+
+{
+  "date": "20.6.2026",
+  "image": "./dist/images/funnyfishinginfinland_primarylogo.png",
+  "text": "Blog post created from REST Client!"
+}
+
+###
+
+### Delete (change id as needed)
+DELETE http://localhost:3001/blogPosts/1
+###
