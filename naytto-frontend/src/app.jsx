@@ -97,6 +97,14 @@ const App = () => {
               </>
             }
           />
+          <Route
+            path="/blogs"
+            element={
+              <>
+                <BlogsPage />
+              </>
+            }
+          />
         </Routes>
       </div>
     </div>
