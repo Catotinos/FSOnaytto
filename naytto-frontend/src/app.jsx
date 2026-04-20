@@ -1,52 +1,93 @@
-import { useState /* useEffect */ } from "react";
+import { useState, useEffect } from "react";
 import HomePage from "./components/HomePage";
-import {
-  BrowserRouter as Router,
-  Routes,
-  Route,
-  Link,
-  useLocation,
-} from "react-router-dom";
+import NavLink from "./components/NavLink";
+
+import { Routes, Route, useLocation } from "react-router-dom";
 
 const App = () => {
   const [user /* setUser */] = useState(null);
   /* const [username, setUsername] = useState("");
   const [password, setPassword] = useState(""); */
 
-  const padding = {
-    padding: 5,
+  const [isMobile, setIsMobile] = useState(window.innerWidth < 768);
+
+  useEffect(() => {
+    const handleResize = () => setIsMobile(window.innerWidth < 768);
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
+
+  useEffect(() => {
+    document.body.style.margin = "0";
+    document.body.style.padding = "0";
+    document.body.style.overflowX = "hidden";
+  });
+
+  const headerStyle = {
+    position: "fixed",
+    top: 0,
+    left: 0,
+    width: "100%",
+    height: isMobile ? "50px" : "80px",
+    backgroundColor: "Black",
+    display: "flex",
+    alightItems: "center",
+    justifyContent: "space-between",
+    padding: isMobile ? "0 10px" : "0 40px",
+    boxSizing: "border-box",
+    zIndex: 10,
+    transition: "all 0.3s ease",
   };
 
   const location = useLocation(); // Finds the location of the current page
 
   return (
     <div>
-      <div>
-        <Link style={padding} to="">
-          Etusivu
-        </Link>
-        <Link style={padding} to="/blogs">
-          Blogit
-        </Link>
+      <div style={headerStyle}>
+        <div
+          style={{
+            display: "flex",
+            alignItems: "center",
+            gap: isMobile ? "5px" : "20px",
+          }}
+        >
+          <NavLink to="/" isMobile={isMobile}>
+            Etusivu
+          </NavLink>
+          <NavLink to="/blogs" isMobile={isMobile}>
+            Blogit
+          </NavLink>
+        </div>
+
+        <div style={{ display: "flex", alignItems: "center" }}>
+          {user ? ( // If the user has logged in, the page displays a log out button.
+            <>
+              <p
+                style={{
+                  color: "white",
+                  margin: 0,
+                  fontSize: isMobile ? "12px" : "16px",
+                }}
+              >
+                {isMobile ? user.name : `Kirjautunut: ${user.name}`}
+                <button
+                  style={{ marginLeft: "10px" }} /* onClick={handleLogOut} */
+                >
+                  Kirjaudu ulos
+                </button>
+              </p>
+            </>
+          ) : (
+            // If the user hasn't logged in, the page displays a log in button.
+            location.pathname !== "/login" && (
+              <NavLink to="/login" isMobile={isMobile}>
+                Kirjaudu sisään
+              </NavLink>
+            )
+          )}
+        </div>
       </div>
-      <div>
-        {user ? ( // If the user has logged in, the page displays a log out button.
-          <>
-            <p>
-              Kirjautunut sisään käyttäjänä {user.name}{" "}
-              <button /* onClick={handleLogOut} */>Kirjaudu ulos</button>
-            </p>
-          </>
-        ) : (
-          // If the user hasn't logged in, the page displays a log in button.
-          location.pathname !== "/login" && (
-            <Link style={padding} to="/login">
-              Kirjaudu sisään
-            </Link>
-          )
-        )}
-      </div>
-      <div>
+      <div style={{ marginTop: isMobile ? "70px" : "90px" }}>
         <Routes>
           <Route
             path=""
