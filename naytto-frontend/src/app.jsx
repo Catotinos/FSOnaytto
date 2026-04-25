@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import HomePage from "./components/HomePage";
 import BlogPage from "./components/BlogPage";
 import NavLink from "./components/NavLink";
+import LoginPage from "./components/LoginPage";
 
 import { Routes, Route, useLocation } from "react-router-dom";
 
@@ -103,6 +104,14 @@ const App = () => {
             element={
               <>
                 <BlogPage />
+              </>
+            }
+          />
+          <Route
+            path="/login"
+            element={
+              <>
+                <LoginPage />
               </>
             }
           />
