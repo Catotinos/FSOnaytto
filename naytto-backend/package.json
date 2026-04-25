@@ -1,0 +1,22 @@
+{
+  "name": "naytto-backend",
+  "version": "1.0.0",
+  "description": "",
+  "homepage": "https://github.com/Catotinos/FSOnaytto#readme",
+  "bugs": {
+    "url": "https://github.com/Catotinos/FSOnaytto/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Catotinos/FSOnaytto.git"
+  },
+  "license": "ISC",
+  "author": "",
+  "type": "commonjs",
+  "main": "index.js",
+  "scripts": {
+    "start": "cross-env NODE_ENV=production node index.js",
+    "dev": "cross-env NODE_ENV=development node --watch index.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  }
+}

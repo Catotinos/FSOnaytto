@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import HomePage from "./components/HomePage";
 import BlogPage from "./components/BlogPage";
+import QuestionnairePage from "./components/QuestionnairePage";
 import NavLink from "./components/NavLink";
 import LoginPage from "./components/LoginPage";
 
@@ -112,6 +113,12 @@ const App = () => {
             element={
               <>
                 <LoginPage />
+              </>
+            }
+            path="/questionnaire"
+            element={
+              <>
+                <QuestionnairePage />
               </>
             }
           />
