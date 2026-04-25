@@ -115,6 +115,8 @@ const App = () => {
                 <LoginPage />
               </>
             }
+            />
+            <Route
             path="/questionnaire"
             element={
               <>
