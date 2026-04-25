@@ -136,8 +136,8 @@ const HomePage = () => {
             style={imageStyle}
             alt="Slide 1"
           />
-          <NavLink to="/feedback" isMobile={isMobile}>
-            Asiakaspalaute
+          <NavLink to="/questionnaire" isMobile={isMobile}>
+            Kyselylomake
           </NavLink>
         </div>
       </section>
@@ -167,26 +167,30 @@ const HomePage = () => {
       <section style={sectionStyle("#0f0f0f")}>
         <div style={textContainerStyle2}>
           <h2 style={h2Style}>
-            Kalastusopas Tero Hasa<br></br>
-            <br></br>Hei! Olen Tero, kalastusoppaasi, ja olen kalastanut
-            Järvi-Suomen vesillä jo vuosien ajan. Hallitsen monenlaiset
-            kalastustekniikat, mutta todellinen intohimoni on suurten kalojen
-            pyytäminen nykyaikaisella live-kaikuluotaimella. Olen jatkuvasti
-            kiinnostunut oppimaan lisää kalojen käyttäytymisestä - erityisesti
-            siitä, miten tuuli, lämpötila ja valo vaikuttavat niiden liikkeisiin
-            ja siitä, mitkä värit ja tekniikat toimivat parhaiten eri
-            olosuhteissa.<br></br>
-            <br></br>Kestävä kalastus on minulle tärkeää. Kaikki ylimittaiset
-            kalat vapautetaan takaisin järveen, jotta kalakannat säilyvät
+            Kalastusopas Tero Hasa
+            <br />
+            <br />
+            Hei! Olen Tero, kalastusoppaasi, ja olen kalastanut Järvi-Suomen
+            vesillä jo vuosien ajan. Hallitsen monenlaiset kalastustekniikat,
+            mutta todellinen intohimoni on suurten kalojen pyytäminen
+            nykyaikaisella live-kaikuluotaimella. Olen jatkuvasti kiinnostunut
+            oppimaan lisää kalojen käyttäytymisestä - erityisesti siitä, miten
+            tuuli, lämpötila ja valo vaikuttavat niiden liikkeisiin ja siitä,
+            mitkä värit ja tekniikat toimivat parhaiten eri olosuhteissa.
+            <br />
+            <br />
+            Kestävä kalastus on minulle tärkeää. Kaikki ylimittaiset kalat
+            vapautetaan takaisin järveen, jotta kalakannat säilyvät
             elinvoimaisina. Osallistun säännöllisesti kalastuskilpailuihin, mikä
             pitää taitoni terävinä. Vietän vesillä vuosittain 50-70 päivää, ja
             nautin siitä, että voin jakaa tämän kokemuksen asiakkaideni kanssa.
-            <br></br>
-            <br></br>Kalastusretkillämme käytämme Finval 555 Fish Pro -venettä,
-            jossa on 200 hevosvoiman moottori - turvallinen ja nopea liikkuminen
-            taattu. Vene on varustettu uusimmalla Lowrance LIVE
-            -kaikuluotaimella ja Motor Guide -sähkömoottorilla, joiden avulla
-            kalastushetkestä saadaan kaikki irti.
+            <br />
+            <br />
+            Kalastusretkillämme käytämme Finval 555 Fish Pro -venettä, jossa on
+            200 hevosvoiman moottori - turvallinen ja nopea liikkuminen taattu.
+            Vene on varustettu uusimmalla Lowrance LIVE -kaikuluotaimella ja
+            Motor Guide -sähkömoottorilla, joiden avulla kalastushetkestä
+            saadaan kaikki irti.
           </h2>
         </div>
       </section>
@@ -206,8 +210,10 @@ const HomePage = () => {
               alt="RockAndLake"
             />
             <h2 style={h2Style}>
-              Rock and lake<br></br>
-              <br></br>Rock and lake kalastusmatkailijalle kaikki majoitus,
+              Rock and lake
+              <br />
+              <br />
+              Rock and lake kalastusmatkailijalle kaikki majoitus,
               kalastusveneet, opastukset ja aktiviteetit. Täältä voit varata
               kalastusretkesi Funny Fishing in Finlandin kanssa.
             </h2>
@@ -227,10 +233,13 @@ const HomePage = () => {
               alt="AmrFishing"
             />
             <h2 style={h2Style}>
-              AMR-Fishing<br></br>
-              <br></br>Kalastusopas & kokki Anssi Ryhänen<br></br>Laadukas
-              yksityinen kalastusretki kokeneen oppaan kanssa Pohjois-Karjalan
-              vesillä.
+              AMR-Fishing
+              <br />
+              <br />
+              Kalastusopas & kokki Anssi Ryhänen
+              <br />
+              Laadukas yksityinen kalastusretki kokeneen oppaan kanssa
+              Pohjois-Karjalan vesillä.
             </h2>
             <NavLink to="https://www.amrfishing.com" isMobile={isMobile}>
               AMR-Fishing
