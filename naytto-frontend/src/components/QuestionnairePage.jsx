@@ -87,7 +87,7 @@ const QuestionnairePage = () => {
       question: question,
       firstName: firstName,
       lastName: lastName,
-      phonenumber: phoneNumber,
+      phoneNumber: phoneNumber,
       email: email,
       agreement: agreement,
     });
