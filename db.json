@@ -11,6 +11,12 @@
       "image": "./dist/images/funnyfishinginfinland_primarylogo.png",
       "text": "Blog post created from REST Client!",
       "id": "qti5csh3LBc"
+    },
+    {
+      "date": "20.6.2026",
+      "image": "./dist/images/funnyfishinginfinland_primarylogo.png",
+      "text": "Blog post created from REST Client!",
+      "id": "9U9U-ar_jvA"
     }
   ],
   "$schema": "./node_modules/json-server/schema.json"

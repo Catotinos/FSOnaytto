@@ -1,4 +1,5 @@
 const mongoose = require('mongoose')
+const { create } = require('./question')
 
 const blogSchema = mongoose.Schema({
   date: {type: String, required: true},
@@ -6,6 +7,10 @@ const blogSchema = mongoose.Schema({
   user: {
     type: mongoose.Schema.Types.ObjectId,
     ref: 'User'
+  },
+  createdAt: {
+    type: Date,
+    default: Date.now
   }
 })
 

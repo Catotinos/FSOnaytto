@@ -1,20 +1,40 @@
-### Get all
-GET http://localhost:3001/blogPosts
-
-###
-
-### Add new
-POST http://localhost:3001/blogPosts
+### Create a new user
+POST http://localhost:3001/api/users
 Content-Type: application/json
 
 {
-  "date": "20.6.2026",
-  "image": "./dist/images/funnyfishinginfinland_primarylogo.png",
-  "text": "Blog post created from REST Client!"
+  "username": "your_username",
+  "name": "Your Name",
+  "password": "your_password"
+}
+
+### Login to get token
+POST http://localhost:3001/api/login
+Content-Type: application/json
+
+{
+  "username": "your_username",
+  "password": "your_password"
+}
+
+### Get all blogs
+GET http://localhost:3001/api/blogs
+
+###
+
+### Add new blog (replace YOUR_TOKEN_HERE)
+POST http://localhost:3001/api/blogs
+Content-Type: application/json
+Authorization: Bearer YOUR_TOKEN_HERE
+
+{
+  "date": "26.6.2026",
+  "text": "Blog post created from REST Client! 6"
 }
 
 ###
 
-### Delete (change id as needed)
-DELETE http://localhost:3001/blogPosts/1
+### Delete blog (change id as needed, and add Authorization header)
+DELETE http://localhost:3001/api/blogs/1
+Authorization: Bearer YOUR_TOKEN_HERE
 ###
