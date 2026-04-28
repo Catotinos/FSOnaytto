@@ -152,7 +152,7 @@ const HomePage = () => {
             muuallakin tai yhteistyökumppanien kanssa retkiä.
           </h2>
           <img
-            src="../dist/images/tralalero.png"
+            src="../dist/images/vene.jpg"
             style={{ ...imageStyle, height: "auto", maxHeight: "30vh" }}
             alt="Vene"
           />
