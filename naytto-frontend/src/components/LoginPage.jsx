@@ -1,19 +1,20 @@
 import {useEffect, useState } from "react";
 import blogService from '../services/blogs'
 import loginService from '../services/login'
-
-  const middle = {
-    position: "fixed",
-    justifySelf: "center",
+import Togglable from './togglable'
+import Blog from './Blog'
+  const main = {
     fontSize: "1.2em",
     top: "10%",
-    width: "auto ",
+    width: "100vw",
+    overflowY: "auto",
+    height: "auto"
   }
 
   const grid = {
     display: "grid",
     placeItems: "center",
-    gridRowGap: "5px"
+    gridRowGap: "5px",
   }
   const bigger = {
     borderStyle: "solid black",
@@ -45,7 +46,11 @@ const LoginPage = () => {
   const [user, setUser] = useState(null)
   const [errorMessage, setErrorMessage] = useState(null)
   const [errorcolour, setErrorColour] = useState('green') 
-
+  useEffect(() => {
+    blogService.getAll().then(blogs =>
+      setBlogs( blogs )
+    )  
+  }, [])
   useEffect(() => {
     const loggedUserJSON = window.localStorage.getItem('loggedBlogappUser')
     if (loggedUserJSON) {
@@ -80,7 +85,7 @@ const LoginPage = () => {
   }
   const loginForm = () => (
     <form onSubmit={handleLogin}>
-      <div>
+      <div style={{...grid, marginTop: "30vh"}}>
         <div>
         <label>
           username
@@ -105,31 +110,40 @@ const LoginPage = () => {
     </div>
     </form>
   )
-
-  
-
   const adminpage = () => (
-    <form onSubmit={addBlog}>
-      <div style={grid}>
-        <h2>Kirjauduttu järjestelmänvalvojana</h2>
-        <button onClick={()=>logout()}>Kirjaudu ulos</button>
-        <h3>Päivämäärä</h3>
-          <input style={bigger}
-            type="text"
-            value={blogdate}
-            onChange={({ target }) => setBlogdate(target.value)}
-          />
-        <h3>Bloginsisältö</h3>
-          <textarea style={bloginput}
-            type="text"
-            value={blogtext}
-            onChange={({ target }) => setBlogtext(target.value)}
-          />
-        <button type="submit">Julkaise</button>
-      </div>
-    </form>
+    <div style={grid}>
+      <h2>Kirjauduttu järjestelmänvalvojana</h2>
+      <button onClick={()=>logout()}>Kirjaudu ulos</button>
+    <Togglable buttonLabel="Uusi Blogi">
+      {newblogform()}
+    </Togglable>
+    <div style={grid}>
+      {blogs.map(blog =>
+          <Blog key={blog.id} blog={blog} />
+        )}
+    </div>
+    </div>
   )
 
+  const newblogform = () => (
+    <form onSubmit={addBlog}>
+        <div style={grid}>
+          <h3>Päivämäärä</h3>
+            <input style={bigger}
+              type="text"
+              value={blogdate}
+              onChange={({ target }) => setBlogdate(target.value)}
+            />
+          <h3>Bloginsisältö</h3>
+            <textarea style={bloginput}
+              type="text"
+              value={blogtext}
+              onChange={({ target }) => setBlogtext(target.value)}
+            />
+          <button type="submit">Julkaise</button>
+        </div>
+      </form>
+  )
   const addBlog = () => (
     event.preventDefault(),
     blogService
@@ -157,14 +171,14 @@ const LoginPage = () => {
         setErrorMessage(null)
       }, 5000)
   )
+  
   const logout = () => (
     window.localStorage.clear(),
     setUser('')
   )
 
-
   return (
-    <div style={middle}>
+    <section style={main}>
       <div>
         <Notification message={errorMessage} color={errorcolour} />
       </div>
@@ -174,7 +188,7 @@ const LoginPage = () => {
         {adminpage()}
       </div>
       )}
-    </div>  
+    </section> 
   );
 };
 

@@ -55,8 +55,15 @@ blogsRouter.delete('/:id', async (request, response) => {
 blogsRouter.put('/:id', async (request, response) => {
   let blog = await Blog.findById(request.params.id)
   blog.date = request.body.date
-  blog.text = request.body.date
-  const savedblog = await blog.save()
-  response.status(201).json(savedblog)
+  blog.text = request.body.text
+  const decodedToken = jwt.verify(getTokenFrom(request), process.env.SECRET)
+  const userid = decodedToken.id
+  if ( blog.user.toString() === userid.toString() ){
+    const savedblog = await blog.save()
+    response.status(201).json(savedblog)
+  }else{
+    return response.status(401).json({ error: "you are not the author of this post!"})
+  }
+  
 })
 module.exports = blogsRouter
