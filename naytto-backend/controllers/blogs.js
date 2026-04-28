@@ -12,9 +12,12 @@ const getTokenFrom = request => {
 }
 
 blogsRouter.get('/', async (request, response) => {
-  const blogs = await Blog.find({}).populate('user', { username: 1, name: 1 })
-  response.json(blogs)
-})
+  const blogs = await Blog.find({})
+    .sort({ createdAt: -1 })
+    .limit(5)
+    .populate('user', { username: 1, name: 1 });
+  response.json(blogs);
+});
 
 blogsRouter.post('/', async (request, response) => {
   const body = request.body
@@ -26,6 +29,16 @@ blogsRouter.post('/', async (request, response) => {
    if (!user) {
     return response.status(400).json({ error: 'userId missing or not valid' })
   }
+
+  // Deletes oldest if 5 already exists
+    const blogCount = await Blog.countDocuments({});
+  if (blogCount >= 5) {
+    const oldestBlog = await Blog.findOne({}).sort({ createdAt: 1 });
+    if (oldestBlog) {
+      await Blog.findByIdAndDelete(oldestBlog._id);
+    }
+  }
+
   const blog = new Blog({
     date: body.date,
     text: body.text,
