@@ -46,10 +46,13 @@ const LoginPage = () => {
   const [user, setUser] = useState(null)
   const [errorMessage, setErrorMessage] = useState(null)
   const [errorcolour, setErrorColour] = useState('green') 
-  useEffect(() => {
+  const getallblogs = async () => {
     blogService.getAll().then(blogs =>
       setBlogs( blogs )
     )  
+  }
+  useEffect(() => {
+    getallblogs()
   }, [])
   useEffect(() => {
     const loggedUserJSON = window.localStorage.getItem('loggedBlogappUser')
@@ -114,12 +117,13 @@ const LoginPage = () => {
     <div style={grid}>
       <h2>Kirjauduttu järjestelmänvalvojana</h2>
       <button onClick={()=>logout()}>Kirjaudu ulos</button>
+      <button onClick={()=>getallblogs()}>Päivitä sivu</button>
     <Togglable buttonLabel="Uusi Blogi">
       {newblogform()}
     </Togglable>
     <div style={grid}>
       {blogs.map(blog =>
-          <Blog key={blog.id} blog={blog} />
+          <Blog key={blog.id} blog={blog}/>
         )}
     </div>
     </div>
