@@ -90,7 +90,7 @@ const App = () => {
           )}
         </div>
       </div>
-      <div style={{ marginTop: isMobile ? "70px" : "90px" }}>
+      <div style={{ marginTop: isMobile ? "60px" : "80px" }}>
         <Routes>
           <Route
             path=""

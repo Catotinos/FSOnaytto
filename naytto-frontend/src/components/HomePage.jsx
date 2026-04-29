@@ -68,8 +68,8 @@ const HomePage = () => {
 
   const mediaContainer1 = {
     position: "relative",
-    width: "50%",
-    height: "75%",
+    width: "100%",
+    height: "100%",
     display: "flex",
     flexDirection: "column",
     justifyContent: "center",
@@ -109,28 +109,28 @@ const HomePage = () => {
     zIndex: 2,
   };
 
-  /* const videoStyle = {
+   const videoStyle = {
     position: "absolute", // Sits behind the image
     width: "100%", // Fills the mediaContainer
     height: "100%", // Adjusted to be smaller than the image like your original
     objectFit: "cover",
     zIndex: 1,
-  }; */
+  }; 
 
   return (
     <div style={{ width: "100%" }}>
       {/* SLIDE 1 */}
       <section style={sectionStyle("#969795")}>
         <div style={mediaContainer1}>
-          {/* <video
+          { <video
             ref={videoRef}
-            src="../dist/videos/tung.mp4"
+            src="../dist/videos/Nettipätkä.mp4"
             style={videoStyle}
             autoPlay
             muted
             loop
             playsInline
-          /> */}
+          /> }
           <img
             src="../dist/images/funnyfishinginfinland_primarylogo.png"
             style={imageStyle}

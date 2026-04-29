@@ -11,6 +11,7 @@ const NavLink = ({ to, children, isMobile }) => {
     borderBottom: isHovered ? "2px solid #00d4ff" : "2px solid transparent",
     transition: "border-bottom 0.3s ease",
     fontSize: isMobile ? "14px" : "18px",
+    zIndex: 2,
   };
 
   return (
