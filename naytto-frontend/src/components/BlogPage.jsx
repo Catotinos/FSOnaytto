@@ -1,5 +1,7 @@
 import { useEffect, useState } from "react";
 
+import { useLang } from "./LanguageContext";
+
 const BlogStyle = {
   position: "fixed",
   top: "50%",
@@ -18,6 +20,8 @@ const BlogsPage = () => {
       .then((res) => res.json())
       .then((data) => setBlogPosts(data));
   }, []);
+
+  const { t } = useLang();
 
   return (
     <div>
@@ -46,7 +50,8 @@ const BlogsPage = () => {
                 style={{ width: "100%", borderRadius: 4, marginBottom: 12 }}
               />
               <div style={{ color: "#333", textAlign: "center" }}>
-                {post.text}
+                {idx === 0 ? t("blogContents.blog1") : post.text}{" "}
+                {/* Makes it so that the latest blog always uses the blogContents.blog1 translation */}
               </div>
             </div>
           ))}

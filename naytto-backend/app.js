@@ -4,11 +4,10 @@ const mongoose = require("mongoose");
 const config = require("./utils/config");
 const logger = require("./utils/logger");
 const middleware = require("./utils/middleware");
-require("node:dns/promises").setServers(["1.1.1.1", "8.8.8.8"]);
 const questionsRouter = require("./controllers/questions");
 const usersRouter = require("./controllers/users");
-const loginRouter = require("./controllers/login")
-const blogsRouter = require("./controllers/blogs")
+const loginRouter = require("./controllers/login");
+const blogsRouter = require("./controllers/blogs");
 
 const app = express();
 
@@ -32,7 +31,7 @@ app.use(middleware.requestLogger);
 
 app.use("/api/login", loginRouter);
 app.use("/api/blogs", blogsRouter);
-app.use("/api/users", usersRouter); 
+app.use("/api/users", usersRouter);
 app.use("/api/questions", questionsRouter);
 
 app.use(middleware.unknownEndpoint);

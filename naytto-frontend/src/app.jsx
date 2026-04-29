@@ -4,6 +4,7 @@ import BlogPage from "./components/BlogPage";
 import QuestionnairePage from "./components/QuestionnairePage";
 import NavLink from "./components/NavLink";
 import LoginPage from "./components/LoginPage";
+import { useLang } from "./components/LanguageContext";
 
 import { Routes, Route, useLocation } from "react-router-dom";
 
@@ -44,6 +45,8 @@ const App = () => {
 
   const location = useLocation(); // Finds the location of the current page
 
+  const { lang, switchLanguage, t } = useLang();
+
   return (
     <div>
       <div style={headerStyle}>
@@ -55,14 +58,17 @@ const App = () => {
           }}
         >
           <NavLink to="/" isMobile={isMobile}>
-            Etusivu
+            {t("navHome")}
           </NavLink>
           <NavLink to="/blogs" isMobile={isMobile}>
-            Blogit
+            {t("navBlogs")}
           </NavLink>
         </div>
 
         <div style={{ display: "flex", alignItems: "center" }}>
+          <button onClick={() => switchLanguage(lang === "fi" ? "en" : "fi")}>
+            {lang === "fi" ? "EN" : "FI"}
+          </button>
           {user ? ( // If the user has logged in, the page displays a log out button.
             <>
               <p
@@ -84,7 +90,7 @@ const App = () => {
             // If the user hasn't logged in, the page displays a log in button.
             location.pathname !== "/login" && (
               <NavLink to="/login" isMobile={isMobile}>
-                Kirjaudu sisään
+                {t("navLogin")}
               </NavLink>
             )
           )}
@@ -115,8 +121,8 @@ const App = () => {
                 <LoginPage />
               </>
             }
-            />
-            <Route
+          />
+          <Route
             path="/questionnaire"
             element={
               <>

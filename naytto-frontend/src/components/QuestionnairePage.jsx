@@ -2,6 +2,7 @@ import { useState } from "react";
 import { Form, Routes, Route } from "react-router-dom";
 
 import questionService from "../services/question";
+import { useLang } from "./LanguageContext";
 
 const mainDiv = {
   minHeight: "100vh",
@@ -112,10 +113,12 @@ const QuestionnairePage = () => {
     return phoneRegex.test(phone);
   };
 
+  const { t } = useLang();
+
   return (
     <>
       <div style={mainDiv}>
-        <h1>Kyselylomake</h1>
+        <h1>{t("formTitle")}</h1>
         <Form onSubmit={addQuestionnaire} style={formStyle}>
           {/* Radio Group */}
           <div style={{ ...inputGroup1, gap: "10px" }}>
@@ -127,7 +130,7 @@ const QuestionnairePage = () => {
                 checked={topic === "1"}
                 onChange={(e) => setTopic(e.target.value)}
               />{" "}
-              Kalastus
+              {t("formContents.option1")}
             </label>
             <label>
               <input
@@ -137,7 +140,7 @@ const QuestionnairePage = () => {
                 checked={topic === "2"}
                 onChange={(e) => setTopic(e.target.value)}
               />{" "}
-              Kalastusretket
+              {t("formContents.option2")}
             </label>
             <label>
               <input
@@ -147,15 +150,15 @@ const QuestionnairePage = () => {
                 checked={topic === "3"}
                 onChange={(e) => setTopic(e.target.value)}
               />{" "}
-              Muu kalastusmatkassa
+              {t("formContents.option3")}
               <br />
-              esim. majoitus tai kalastusveneet
+              {t("formContents.option3part2")}
             </label>
           </div>
 
           {/* Question Area */}
           <div style={inputGroup2}>
-            <label htmlFor="question">Kirjoita kysymykset tähän</label>
+            <label htmlFor="question">{t("formContents.questionBox")}</label>
             <textarea
               id="question"
               style={{ width: "95%", padding: "10px" }}
@@ -166,7 +169,7 @@ const QuestionnairePage = () => {
           {/* Name Row */}
           <div style={rowLayout}>
             <div style={{ ...inputGroup2, flex: 1, minWidth: "200px" }}>
-              <label>Etunimi</label>
+              <label>{t("formContents.firstName")}</label>
               <input
                 type="text"
                 style={{ width: "90%", padding: "8px" }}
@@ -175,7 +178,7 @@ const QuestionnairePage = () => {
               />
             </div>
             <div style={{ ...inputGroup2, flex: 1, minWidth: "200px" }}>
-              <label>Sukunimi</label>
+              <label>{t("formContents.lastName")}</label>
               <input
                 type="text"
                 style={{ width: "90%", padding: "8px" }}
@@ -187,7 +190,7 @@ const QuestionnairePage = () => {
           {/* Contact Row */}
           <div style={rowLayout}>
             <div style={{ ...inputGroup2, flex: 1, minWidth: "200px" }}>
-              <label>Puhelinnumero</label>
+              <label>{t("formContents.phoneNumber")}</label>
               <input
                 type="text"
                 style={{ width: "90%", padding: "8px" }}
@@ -196,7 +199,7 @@ const QuestionnairePage = () => {
               />
             </div>
             <div style={{ ...inputGroup2, flex: 1, minWidth: "200px" }}>
-              <label>Sähköpostiosoite</label>
+              <label>{t("formContents.email")}</label>
               <input
                 type="email"
                 style={{ width: "90%", padding: "8px" }}
@@ -207,10 +210,7 @@ const QuestionnairePage = () => {
           </div>
           {/* Agreement */}
           <div style={{ borderTop: "1px solid #ccc", paddingTop: "15px" }}>
-            <p style={{ fontSize: "14px" }}>
-              Tietoja käsittelee Funny Fishing in Finland. Niitä ei käytetä
-              markkinointiin eikä jaeta eteenpäin.
-            </p>
+            <p style={{ fontSize: "14px" }}>{t("formContents.consentText")}</p>
             <label
               style={{ display: "flex", alignItems: "center", gap: "10px" }}
             >
@@ -219,10 +219,10 @@ const QuestionnairePage = () => {
                 checked={agreement}
                 onChange={(e) => setAgreement(e.target.checked)}
               />
-              Kyllä
+              {t("formContents.consentBox")}
             </label>
           </div>
-          <button type="submit">Lähetä!</button>
+          <button type="submit">{t("formContents.submit")}</button>
         </Form>
       </div>
     </>

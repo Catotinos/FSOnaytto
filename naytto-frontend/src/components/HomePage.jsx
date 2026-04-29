@@ -2,6 +2,8 @@ import { useRef, useEffect, useState } from "react";
 
 import NavLink from "./NavLink";
 
+import { useLang } from "./LanguageContext";
+
 const HomePage = () => {
   const videoRef = useRef(null);
 
@@ -109,35 +111,39 @@ const HomePage = () => {
     zIndex: 2,
   };
 
-   const videoStyle = {
+  const videoStyle = {
     position: "absolute", // Sits behind the image
     width: "100%", // Fills the mediaContainer
     height: "100%", // Adjusted to be smaller than the image like your original
     objectFit: "cover",
     zIndex: 1,
-  }; 
+  };
+
+  const { t } = useLang();
 
   return (
     <div style={{ width: "100%" }}>
       {/* SLIDE 1 */}
       <section style={sectionStyle("#969795")}>
         <div style={mediaContainer1}>
-          { <video
-            ref={videoRef}
-            src="../dist/videos/Nettipätkä.mp4"
-            style={videoStyle}
-            autoPlay
-            muted
-            loop
-            playsInline
-          /> }
+          {
+            <video
+              ref={videoRef}
+              src="../dist/videos/Nettipätkä.mp4"
+              style={videoStyle}
+              autoPlay
+              muted
+              loop
+              playsInline
+            />
+          }
           <img
             src="../dist/images/funnyfishinginfinland_primarylogo.png"
             style={imageStyle}
             alt="Slide 1"
           />
           <NavLink to="/questionnaire" isMobile={isMobile}>
-            Kyselylomake
+            {t("formTitle")}
           </NavLink>
         </div>
       </section>
@@ -145,21 +151,14 @@ const HomePage = () => {
       {/* SLIDE 2 */}
       <section style={sectionStyle2("#000000")}>
         <div style={textContainerStyle}>
-          <h1 style={h1Style}>FUNNY FISHING IN FINLAND YRITYSESITTELY</h1>
-          <h2 style={h2Style}>
-            Funny Fishing in Finland on 2023 perustettu yritys, jonka päätoimi
-            on järjestää kalastusmatkoja Etelä-Savossa, tarvittaessa teemme
-            muuallakin tai yhteistyökumppanien kanssa retkiä.
-          </h2>
+          <h1 style={h1Style}>{t("homeContents.slideTitle1")}</h1>
+          <h2 style={h2Style}>{t("homeContents.slideContents1")}</h2>
           <img
             src="../dist/images/vene.jpg"
             style={{ ...imageStyle, height: "auto", maxHeight: "30vh" }}
             alt="Vene"
           />
-          <h2 style={h2Style}>
-            Vene on Finval 555 FishPro, 200 hv perämoottorilla, Lowrances
-            luotaimilla ja Active target live antureilla varustettu.
-          </h2>
+          <h2 style={h2Style}>{t("homeContents.slideContents2")}</h2>
         </div>
       </section>
 
@@ -167,30 +166,16 @@ const HomePage = () => {
       <section style={sectionStyle("#0f0f0f")}>
         <div style={textContainerStyle2}>
           <h2 style={h2Style}>
-            Kalastusopas Tero Hasa
+            {t("homeContents.slideTitle2")}
             <br />
             <br />
-            Hei! Olen Tero, kalastusoppaasi, ja olen kalastanut Järvi-Suomen
-            vesillä jo vuosien ajan. Hallitsen monenlaiset kalastustekniikat,
-            mutta todellinen intohimoni on suurten kalojen pyytäminen
-            nykyaikaisella live-kaikuluotaimella. Olen jatkuvasti kiinnostunut
-            oppimaan lisää kalojen käyttäytymisestä - erityisesti siitä, miten
-            tuuli, lämpötila ja valo vaikuttavat niiden liikkeisiin ja siitä,
-            mitkä värit ja tekniikat toimivat parhaiten eri olosuhteissa.
+            {t("homeContents.slideContents3")}
             <br />
             <br />
-            Kestävä kalastus on minulle tärkeää. Kaikki ylimittaiset kalat
-            vapautetaan takaisin järveen, jotta kalakannat säilyvät
-            elinvoimaisina. Osallistun säännöllisesti kalastuskilpailuihin, mikä
-            pitää taitoni terävinä. Vietän vesillä vuosittain 50-70 päivää, ja
-            nautin siitä, että voin jakaa tämän kokemuksen asiakkaideni kanssa.
+            {t("homeContents.slideContents4")}
             <br />
             <br />
-            Kalastusretkillämme käytämme Finval 555 Fish Pro -venettä, jossa on
-            200 hevosvoiman moottori - turvallinen ja nopea liikkuminen taattu.
-            Vene on varustettu uusimmalla Lowrance LIVE -kaikuluotaimella ja
-            Motor Guide -sähkömoottorilla, joiden avulla kalastushetkestä
-            saadaan kaikki irti.
+            {t("homeContents.slideContents5")}
           </h2>
         </div>
       </section>
@@ -213,9 +198,7 @@ const HomePage = () => {
               Rock and lake
               <br />
               <br />
-              Rock and lake kalastusmatkailijalle kaikki majoitus,
-              kalastusveneet, opastukset ja aktiviteetit. Täältä voit varata
-              kalastusretkesi Funny Fishing in Finlandin kanssa.
+              {t("homeContents.slideContents6")}
             </h2>
             <NavLink to="https://www.rockandlake.com" isMobile={isMobile}>
               Rock And Lake
@@ -236,10 +219,9 @@ const HomePage = () => {
               AMR-Fishing
               <br />
               <br />
-              Kalastusopas & kokki Anssi Ryhänen
+              {t("homeContents.slideContents7")}
               <br />
-              Laadukas yksityinen kalastusretki kokeneen oppaan kanssa
-              Pohjois-Karjalan vesillä.
+              {t("homeContents.slideContents8")}
             </h2>
             <NavLink to="https://www.amrfishing.com" isMobile={isMobile}>
               AMR-Fishing
