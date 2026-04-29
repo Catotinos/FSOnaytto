@@ -1,6 +1,7 @@
 import {useEffect, useState } from "react";
 import blogService from '../services/blogs'
 import loginService from '../services/login'
+/* eslint-disable */
 import Togglable from './togglable'
 import Blog from './Blog'
   const main = {
@@ -8,7 +9,8 @@ import Blog from './Blog'
     top: "10%",
     width: "100vw",
     overflowY: "auto",
-    height: "auto"
+    height: "auto",
+    placeItems: "center", 
   }
 
   const grid = {
@@ -37,6 +39,9 @@ import Blog from './Blog'
     minHeight: "20px"
   }
 
+  const errormsg = {
+    fontSize: "2em"
+  }
 const LoginPage = () => {
   const [blogs, setBlogs] = useState([])
   const [username, setUsername] = useState('')
@@ -148,6 +153,7 @@ const LoginPage = () => {
         </div>
       </form>
   )
+
   const addBlog = () => (
     event.preventDefault(),
     blogService
@@ -161,8 +167,9 @@ const LoginPage = () => {
       setBlogs(blogs.concat(response))
       setBlogdate("")
       setBlogtext("")
-    }) .catch(error =>{
-      setErrorMessage(error)
+    })
+    .catch(error =>{
+      setErrorMessage("Istuntosi on vanhentunut")
       setErrorColour(`red`)
       setTimeout(() => {
         setErrorMessage(null)
@@ -184,7 +191,7 @@ const LoginPage = () => {
   return (
     <section style={main}>
       <div>
-        <Notification message={errorMessage} color={errorcolour} />
+        <Notification message={errorMessage} color={errorcolour} style={errormsg} />
       </div>
       {!user && loginForm()}
       {user && (
@@ -196,13 +203,13 @@ const LoginPage = () => {
   );
 };
 
-const Notification = ({ message, color } ) => {
+const Notification = ({ message, color, style } ) => {
   if (message === null) {
     return null
   }
 
   return (
-    <div className="error" style={{color: color}}>
+    <div className="error" style={{...style, color: color}}>
       {message}
     </div>
   )
