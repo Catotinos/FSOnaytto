@@ -63,7 +63,6 @@ const LoginPage = () => {
     const loggedUserJSON = window.localStorage.getItem('loggedBlogappUser')
     if (loggedUserJSON) {
       const user = JSON.parse(loggedUserJSON)
-      // eslint-disable-next-line react-hooks/set-state-in-effect
       setUser(user)
       blogService.setToken(user.token)
     }
@@ -81,15 +80,16 @@ const LoginPage = () => {
       setUser(user)
       setUsername('')
       setPassword('')
-    } catch {   
-      setErrorMessage('wrong credentials')
+    } catch(error) {   
+      console.log(error)
+      setErrorMessage(error.response.data.error)
       setErrorColour(
           `red`
         )
       setTimeout(() => {
         setErrorMessage(null)
       }, 5000)
-    }
+    } 
   }
   const loginForm = () => (
     <form onSubmit={handleLogin}>
@@ -172,7 +172,8 @@ const LoginPage = () => {
       setBlogtext("")
     })
     .catch(error =>{
-      setErrorMessage("Istuntosi on vanhentunut")
+      console.log(error)
+      setErrorMessage(error.response.data.error)
       setErrorColour(`red`)
       setTimeout(() => {
         setErrorMessage(null)
