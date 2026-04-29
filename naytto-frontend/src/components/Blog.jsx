@@ -35,7 +35,7 @@ const Blog = ({ blog }) => {
     padding: 10,
     paddingLeft: 2,
     border: 'solid',
-    borderWidth: 1,
+    borderWidth: 3,
     marginBottom: 5
   }
 
@@ -71,16 +71,17 @@ const Blog = ({ blog }) => {
               onChange={({ target }) => setBlogtext(target.value)}
             />
           <button type="submit">Julkaise</button>
+          <button onClick={()=>Delete(blog)}>Poista</button>
         </div>
       </form>
     )
   }
 
   return(
-  <div style={blogStyle}>
+  <div style={{...grid, ...blogStyle}}>
     <div>
-      {blog.date}
-      <button onClick={()=>Delete(blog)}>Poista</button>
+      <h1>{blog.date}</h1>
+      
     </div>
     <Togglable buttonLabel="Muokkaa">
       

@@ -126,6 +126,9 @@ const LoginPage = () => {
     <Togglable buttonLabel="Uusi Blogi">
       {newblogform()}
     </Togglable>
+    <div>
+      <h1>blogit</h1>
+    </div>
     <div style={grid}>
       {blogs.map(blog =>
           <Blog key={blog.id} blog={blog}/>
