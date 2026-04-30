@@ -15,6 +15,14 @@ const BlogStyle = {
 const BlogsPage = () => {
   const [blogPosts, setBlogPosts] = useState([]);
 
+  const [, setIsMobile] = useState(window.innerWidth < 1024);
+
+  useEffect(() => {
+    const handleResize = () => setIsMobile(window.innerWidth < 1024);
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
+
   useEffect(() => {
     fetch("http://localhost:3001/api/blogs")
       .then((res) => res.json())

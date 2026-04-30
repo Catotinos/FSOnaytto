@@ -17,10 +17,10 @@ const HomePage = () => {
     }
   }, []);
 
-  const [isMobile, setIsMobile] = useState(window.innerWidth < 768);
+  const [isMobile, setIsMobile] = useState(window.innerWidth < 1024);
 
   useEffect(() => {
-    const handleResize = () => setIsMobile(window.innerWidth < 768);
+    const handleResize = () => setIsMobile(window.innerWidth < 1024);
     window.addEventListener("resize", handleResize);
     return () => window.removeEventListener("resize", handleResize);
   }, []);
@@ -70,38 +70,49 @@ const HomePage = () => {
   };
 
   const imageStyle = {
-    width: "75%", // Takes up 100% of the mediaContainer
-    height: "75%",
+    width: "100%%", // Takes up 100% of the mediaContainer
+    height: "100%",
     objectFit: "contain",
     zIndex: 2,
   };
 
   const videoStyle = {
     position: "absolute", // Sits behind the image
+    top: 0,
+    left: 0,
     width: "100%", // Fills the mediaContainer
     height: "100%", // Adjusted to be smaller than the image like your original
     objectFit: "cover",
     zIndex: 1,
+    opacity: 1,
   };
 
   const { t } = useLang();
 
   return (
-    <div style={{ width: "100%", backgroundColor: "#000000" }}>
+    <div
+      style={{
+        width: "100%",
+        backgroundColor: "#000000",
+        userSelect: "none",
+        WebkitUserSelect: "none",
+        msUserSelect: "none",
+      }}
+    >
       {/* SLIDE 1 */}
-      <section style={sectionStyleBase("#969795")}>
-        <div style={mediaContainer1}>
-          {
-            <video
-              ref={videoRef}
-              src="../dist/videos/Nettipätkä.mp4"
-              style={videoStyle}
-              autoPlay
-              muted
-              loop
-              playsInline
-            />
-          }
+      <section style={sectionStyleBase("#5e5e5e")}>
+        {
+          <video
+            ref={videoRef}
+            src="../dist/videos/Nettipätkä.mp4"
+            style={videoStyle}
+            autoPlay
+            muted
+            loop
+            playsInline
+          />
+        }
+        <div style={{ ...mediaContainer1, zIndex: 2 }}>
           <img
             src="../dist/images/funnyfishinginfinland_primarylogo.png"
             style={{ ...imageStyle, maxHeight: "50vh" }}
@@ -121,7 +132,7 @@ const HomePage = () => {
       </section>
 
       {/* SLIDE 3 */}
-      <section style={sectionStyleBase("#0f0f0f")}>
+      <section style={sectionStyleBase("#0a0a0a")}>
         <div
           style={{
             ...textContainerStyle,
