@@ -38,6 +38,10 @@ const bloginput = {
   minWidth: "200px",
   minHeight: "20px",
 };
+const btnstyle = {
+  height: "4vh",
+  fontSize: "0.8em"
+};
 
 const errormsg = {
   fontSize: "2em",
@@ -117,8 +121,10 @@ const LoginPage = () => {
   const adminpage = () => (
     <div style={grid}>
       <h2>Kirjauduttu järjestelmänvalvojana</h2>
-      <button onClick={() => logout()}>Kirjaudu ulos</button>
-      <button onClick={() => getallblogs()}>Päivitä sivu</button>
+        <div><button style={btnstyle} onClick={() => logout()}>Kirjaudu ulos</button>
+        <button style={btnstyle} onClick={() => getallblogs()}>Päivitä sivu</button>
+      </div>
+      
       <Togglable buttonLabel="Uusi Blogi">{newblogform()}</Togglable>
       <div>
         <h1>blogit</h1>
@@ -148,7 +154,7 @@ const LoginPage = () => {
           value={blogtext}
           onChange={({ target }) => setBlogtext(target.value)}
         />
-        <button type="submit">Julkaise</button>
+        <button style={btnstyle} type="submit">Julkaise</button>
       </div>
     </form>
   );

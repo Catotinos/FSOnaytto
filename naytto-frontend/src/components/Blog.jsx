@@ -8,6 +8,11 @@ import Togglable from './togglable'
     gridRowGap: "5px"
   }
 
+  const btnstyle = {
+  height: "4vh",
+  fontSize: "0.8em"
+};
+
   const bigger = {
     borderStyle: "solid black",
     borderWidth: "1px",
@@ -36,7 +41,8 @@ const Blog = ({ blog }) => {
     paddingLeft: 2,
     border: 'solid',
     borderWidth: 3,
-    marginBottom: 5
+    marginBottom: 5,
+    width: "100%"
   }
 
   const editblog = async event => {
@@ -70,8 +76,10 @@ const Blog = ({ blog }) => {
               value={blogtext}
               onChange={({ target }) => setBlogtext(target.value)}
             />
-          <button type="submit">Julkaise</button>
-          <button onClick={()=>Delete(blog)}>Poista</button>
+          <div>
+          <button style={btnstyle} type="submit">Julkaise</button>
+          <button style={btnstyle} onClick={()=>Delete(blog)}>Poista</button>
+          </div>
         </div>
       </form>
     )
