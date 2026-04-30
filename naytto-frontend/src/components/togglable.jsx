@@ -1,5 +1,8 @@
 import { useState } from 'react'
-
+const btnstyle = {
+  height: "4vh",
+  fontSize: "0.8em"
+};
 const Togglable = (props) => {
   const [visible, setVisible] = useState(false)
 
@@ -13,11 +16,11 @@ const Togglable = (props) => {
   return (
     <div>
       <div style={hideWhenVisible}>
-        <button onClick={toggleVisibility}>{props.buttonLabel}</button>
+        <button style={btnstyle} onClick={toggleVisibility}>{props.buttonLabel}</button>
       </div>
       <div style={showWhenVisible}>
         {props.children}
-        <button onClick={toggleVisibility}>Sulje</button>
+        <button style={btnstyle} onClick={toggleVisibility}>Sulje</button>
       </div>
     </div>
   )
