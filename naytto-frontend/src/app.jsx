@@ -79,6 +79,10 @@ const App = () => {
             gap: isMobile ? "5px" : "15px",
           }}
         >
+          <img
+            src="../dist/images/tralalero.png"
+            style={{ width: "50px", height: "50px" }}
+          ></img>
           <NavLink
             to="https://www.tiktok.com/@funnyfishinginfinland"
             isMobile={isMobile}

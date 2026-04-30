@@ -57,12 +57,12 @@ const HomePage = () => {
   };
 
   const h1Style = {
-    fontSize: isMobile ? "24px" : "36px",
+    fontSize: isMobile ? "24px" : "40px",
     marginBottom: "20px",
   };
 
   const h2Style = {
-    fontSize: isMobile ? "16px" : "20px",
+    fontSize: isMobile ? "16px" : "24px",
     fontWeight: "normal",
     lineHeight: "1.6",
     margin: "15px 0",
@@ -143,7 +143,7 @@ const HomePage = () => {
             textAlign: isMobile ? "center" : "left",
           }}
         >
-          <h2 style={{ ...h2Style, fontSize: isMobile ? "14px" : "18px" }}>
+          <h2 style={{ ...h2Style, fontSize: isMobile ? "14px" : "24px" }}>
             {t("homeContents.slideTitle2")}
             <br />
             <br />
