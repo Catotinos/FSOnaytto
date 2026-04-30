@@ -24,7 +24,7 @@ const BlogsPage = () => {
   const { t } = useLang();
 
   return (
-    <div>
+    <div style={{ backgroundColor: "white" }}>
       <div style={{ position: "relative", zIndex: 1 }}>
         <h1 style={{ color: "black", textAlign: "center" }}>Blogit</h1>
 

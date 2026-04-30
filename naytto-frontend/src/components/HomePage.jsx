@@ -25,48 +25,19 @@ const HomePage = () => {
     return () => window.removeEventListener("resize", handleResize);
   }, []);
 
-  const sectionStyle = (bgColor) => ({
-    height: "100vh",
+  const sectionStyleBase = (bgColor) => ({
+    minHeight: "100vh", // Use minHeight so it can grow if text is long
     width: "100%",
     backgroundColor: bgColor,
-    display: "flex", // Flex handles centering perfectly
+    display: "flex",
+    flexDirection: "column", // Column is safer for all slides
     justifyContent: "center",
     alignItems: "center",
     position: "relative",
+    padding: isMobile ? "80px 20px" : "40px 0", // Space for header & breathing room
+    boxSizing: "border-box",
     overflow: "hidden",
-    margin: 0,
-    padding: 0,
   });
-
-  const sectionStyle2 = (bgColor) => ({
-    height: "100vh",
-    width: "100%",
-    backgroundColor: bgColor,
-    display: "flex", // Flex handles centering perfectly
-    flexDirection: "column",
-    justifyContent: "center",
-    alignItems: "center",
-    position: "relative",
-    overflow: "hidden",
-    margin: 0,
-    padding: 0,
-  });
-
-  const rowContainer = {
-    display: "flex",
-    flexDirection: isMobile ? "column" : "row",
-    justifyContent: "center",
-    alignItems: "center",
-    gap: "40px",
-    width: "100%",
-  };
-
-  const itemGroup = {
-    display: "flex",
-    flexDirection: "column",
-    alignItems: "center",
-    maxWidth: isMobile ? "80%" : "40%",
-  };
 
   const mediaContainer1 = {
     position: "relative",
@@ -79,16 +50,10 @@ const HomePage = () => {
   };
 
   const textContainerStyle = {
+    width: "100%",
     maxWidth: "800px",
     textAlign: "center",
-    padding: "0 20px",
     color: "#ffffff",
-  };
-
-  const textContainerStyle2 = {
-    maxWidth: "800px",
-    textAlign: "left",
-    padding: "0 20px",
   };
 
   const h1Style = {
@@ -122,9 +87,9 @@ const HomePage = () => {
   const { t } = useLang();
 
   return (
-    <div style={{ width: "100%" }}>
+    <div style={{ width: "100%", backgroundColor: "#000000" }}>
       {/* SLIDE 1 */}
-      <section style={sectionStyle("#969795")}>
+      <section style={sectionStyleBase("#969795")}>
         <div style={mediaContainer1}>
           {
             <video
@@ -139,33 +104,31 @@ const HomePage = () => {
           }
           <img
             src="../dist/images/funnyfishinginfinland_primarylogo.png"
-            style={imageStyle}
+            style={{ ...imageStyle, maxHeight: "50vh" }}
             alt="Slide 1"
           />
-          <NavLink to="/questionnaire" isMobile={isMobile}>
-            {t("formTitle")}
-          </NavLink>
         </div>
       </section>
 
       {/* SLIDE 2 */}
-      <section style={sectionStyle2("#000000")}>
+      <section style={sectionStyleBase("#000000")}>
         <div style={textContainerStyle}>
           <h1 style={h1Style}>{t("homeContents.slideTitle1")}</h1>
           <h2 style={h2Style}>{t("homeContents.slideContents1")}</h2>
-          <img
-            src="../dist/images/vene.jpg"
-            style={{ ...imageStyle, height: "auto", maxHeight: "30vh" }}
-            alt="Vene"
-          />
+          <img src="../dist/images/vene.jpg" style={imageStyle} alt="Vene" />
           <h2 style={h2Style}>{t("homeContents.slideContents2")}</h2>
         </div>
       </section>
 
       {/* SLIDE 3 */}
-      <section style={sectionStyle("#0f0f0f")}>
-        <div style={textContainerStyle2}>
-          <h2 style={h2Style}>
+      <section style={sectionStyleBase("#0f0f0f")}>
+        <div
+          style={{
+            ...textContainerStyle,
+            textAlign: isMobile ? "center" : "left",
+          }}
+        >
+          <h2 style={{ ...h2Style, fontSize: isMobile ? "14px" : "18px" }}>
             {t("homeContents.slideTitle2")}
             <br />
             <br />
@@ -181,19 +144,42 @@ const HomePage = () => {
       </section>
 
       {/* SLIDE 4 */}
-      <section style={sectionStyle("#000000")}>
-        <div style={rowContainer}>
-          <div style={itemGroup}>
-            <img
-              src="../dist/images/rockandlake.png"
+      <section style={sectionStyleBase("#000000")}>
+        <div
+          style={{
+            display: "flex",
+            flexDirection: isMobile ? "column" : "row",
+            gap: isMobile ? "40px" : "80px",
+            alignItems: "flex-start",
+            justifyContent: "center",
+            width: "100%",
+            maxWidth: "1200px",
+          }}
+        >
+          <div
+            style={{
+              flex: 1,
+              display: "flex",
+              flexDirection: "column",
+              alignItems: "center",
+              textAlign: "center",
+            }}
+          >
+            <div
               style={{
-                ...imageStyle,
+                height: isMobile ? "auto" : "250px",
+                display: "flex",
+                alignItems: "center",
+                justifyContent: "center",
                 width: "100%",
-                height: "auto",
-                maxHeight: "25vh",
               }}
-              alt="RockAndLake"
-            />
+            >
+              <img
+                src="../dist/images/rockandlake.png"
+                style={{ ...imageStyle, maxHeight: "200px" }}
+                alt="RockAndLake"
+              />
+            </div>
             <h2 style={h2Style}>
               Rock and lake
               <br />
@@ -201,20 +187,33 @@ const HomePage = () => {
               {t("homeContents.slideContents6")}
             </h2>
             <NavLink to="https://www.rockandlake.com" isMobile={isMobile}>
-              Rock And Lake
+              <strong>Rock And Lake</strong>
             </NavLink>
           </div>
-          <div style={itemGroup}>
-            <img
-              src="../dist/images/amrfishing.png"
+          <div
+            style={{
+              flex: 1,
+              display: "flex",
+              flexDirection: "column",
+              alignItems: "center",
+              textAlign: "center",
+            }}
+          >
+            <div
               style={{
-                ...imageStyle,
+                height: isMobile ? "auto" : "250px",
+                display: "flex",
+                alignItems: "center",
+                justifyContent: "center",
                 width: "100%",
-                height: "auto",
-                maxHeight: "25vh",
               }}
-              alt="AmrFishing"
-            />
+            >
+              <img
+                src="../dist/images/amrfishing.png"
+                style={{ ...imageStyle, maxHeight: "200px" }}
+                alt="AmrFishing"
+              />
+            </div>
             <h2 style={h2Style}>
               AMR-Fishing
               <br />
@@ -224,7 +223,7 @@ const HomePage = () => {
               {t("homeContents.slideContents8")}
             </h2>
             <NavLink to="https://www.amrfishing.com" isMobile={isMobile}>
-              AMR-Fishing
+              <strong>AMR-Fishing</strong>
             </NavLink>
           </div>
         </div>

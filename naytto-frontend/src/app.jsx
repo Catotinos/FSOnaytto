@@ -9,52 +9,53 @@ import { useLang } from "./components/LanguageContext";
 import { Routes, Route, useLocation } from "react-router-dom";
 
 const App = () => {
-  const [user /* setUser */] = useState(null);
-  /* const [username, setUsername] = useState("");
-  const [password, setPassword] = useState(""); */
-
-  const [isMobile, setIsMobile] = useState(window.innerWidth < 768);
+  const [isMobile, setIsMobile] = useState(window.innerWidth < 1024);
 
   useEffect(() => {
-    const handleResize = () => setIsMobile(window.innerWidth < 768);
+    const handleResize = () => setIsMobile(window.innerWidth < 1024);
     window.addEventListener("resize", handleResize);
-    return () => window.removeEventListener("resize", handleResize);
-  }, []);
 
-  useEffect(() => {
     document.body.style.margin = "0";
     document.body.style.padding = "0";
     document.body.style.overflowX = "hidden";
-  });
+    document.body.style.backgroundColor = "black";
+
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
 
   const headerStyle = {
     position: "fixed",
     top: 0,
     left: 0,
     width: "100%",
-    height: isMobile ? "50px" : "80px",
-    backgroundColor: "Black",
+    height: isMobile ? "auto" : "80px",
+    minHeight: isMobile ? "60px" : "80px",
+    backgroundColor: "rgba(0, 0, 0, 0.95)",
     display: "flex",
+    flexDirection: "row",
     alightItems: "center",
     justifyContent: "space-between",
     padding: isMobile ? "0 10px" : "0 40px",
     boxSizing: "border-box",
-    zIndex: 10,
+    zIndex: 1000,
     transition: "all 0.3s ease",
   };
 
-  const location = useLocation(); // Finds the location of the current page
+  const location = useLocation(); // Finds the location of the current page */
 
   const { lang, switchLanguage, t } = useLang();
 
+  const contentPaddingTop =
+    location.pathname === "/" ? "0px" : isMobile ? "60px" : "80px";
+
   return (
-    <div>
+    <div style={{ width: "100%" }}>
       <div style={headerStyle}>
         <div
           style={{
             display: "flex",
             alignItems: "center",
-            gap: isMobile ? "5px" : "20px",
+            gap: isMobile ? "5px" : "15px",
           }}
         >
           <NavLink to="/" isMobile={isMobile}>
@@ -63,50 +64,58 @@ const App = () => {
           <NavLink to="/blogs" isMobile={isMobile}>
             {t("navBlogs")}
           </NavLink>
+          <NavLink to="/questionnaire" isMobile={isMobile}>
+            {t("formTitle")}
+          </NavLink>
+          <NavLink to="/login" isMobile={isMobile}>
+            {t("navLogin")}
+          </NavLink>
         </div>
 
-        <div style={{ display: "flex", alignItems: "center" }}>
-
-          <a href="#" style={{ color: "white", marginLeft: "20px" }}>Instagram</a>
-          <a href="#" style={{ color: "white", marginLeft: "20px" }}>TikTok</a>
-
-          <button onClick={() => switchLanguage(lang === "fi" ? "en" : "fi")}>
+        <div
+          style={{
+            display: "flex",
+            alignItems: "center",
+            gap: isMobile ? "5px" : "15px",
+          }}
+        >
+          <NavLink
+            to="https://www.tiktok.com/@funnyfishinginfinland"
+            isMobile={isMobile}
+          >
+            TikTok
+          </NavLink>
+          <NavLink
+            to="https://www.instagram.com/funnyfishinginfinland"
+            isMobile={isMobile}
+          >
+            Instagram
+          </NavLink>
+          <button
+            style={{
+              backgroundColor: "transparent",
+              color: "white",
+              border: "1px solid white",
+              borderRadius: "4px",
+              padding: isMobile ? "4px 8px" : "8px 16px",
+              cursor: "pointer",
+              fontSize: "12px",
+              marginLeft: "5px",
+            }}
+            onClick={() => switchLanguage(lang === "fi" ? "en" : "fi")}
+          >
             {lang === "fi" ? "EN" : "FI"}
           </button>
-          {user ? ( // If the user has logged in, the page displays a log out button.
-            <>
-              <p
-                style={{
-                  color: "white",
-                  margin: 0,
-                  fontSize: isMobile ? "12px" : "16px",
-                }}
-              >
-                {isMobile ? user.name : `Kirjautunut: ${user.name}`}
-                <button
-                  style={{ marginLeft: "10px" }} /* onClick={handleLogOut} */
-                >
-                  Kirjaudu ulos
-                </button>
-              </p>
-            </>
-          ) : (
-            // If the user hasn't logged in, the page displays a log in button.
-            location.pathname !== "/login" && (
-              <NavLink to="/login" isMobile={isMobile}>
-                {t("navLogin")}
-              </NavLink>
-            )
-          )}
         </div>
       </div>
-      <div style={{ marginTop: isMobile ? "60px" : "80px" }}>
+
+      <div style={{ width: "100%", paddingTop: contentPaddingTop }}>
         <Routes>
           <Route
             path=""
             element={
               <>
-                <HomePage />
+                <HomePage isMobile={isMobile} />
               </>
             }
           />
@@ -114,7 +123,7 @@ const App = () => {
             path="/blogs"
             element={
               <>
-                <BlogPage />
+                <BlogPage isMobile={isMobile} />
               </>
             }
           />
@@ -122,7 +131,7 @@ const App = () => {
             path="/login"
             element={
               <>
-                <LoginPage />
+                <LoginPage isMobile={isMobile} />
               </>
             }
           />
@@ -130,7 +139,7 @@ const App = () => {
             path="/questionnaire"
             element={
               <>
-                <QuestionnairePage />
+                <QuestionnairePage isMobile={isMobile} />
               </>
             }
           />

@@ -117,7 +117,7 @@ const QuestionnairePage = () => {
 
   return (
     <>
-      <div style={mainDiv}>
+      <div style={{ ...mainDiv, backgroundColor: "white" }}>
         <h1>{t("formTitle")}</h1>
         <Form onSubmit={addQuestionnaire} style={formStyle}>
           {/* Radio Group */}
