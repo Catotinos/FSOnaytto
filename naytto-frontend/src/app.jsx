@@ -66,6 +66,10 @@ const App = () => {
         </div>
 
         <div style={{ display: "flex", alignItems: "center" }}>
+
+          <a href="#" style={{ color: "white", marginLeft: "20px" }}>Instagram</a>
+          <a href="#" style={{ color: "white", marginLeft: "20px" }}>TikTok</a>
+
           <button onClick={() => switchLanguage(lang === "fi" ? "en" : "fi")}>
             {lang === "fi" ? "EN" : "FI"}
           </button>
