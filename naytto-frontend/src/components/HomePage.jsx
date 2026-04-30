@@ -70,7 +70,7 @@ const HomePage = () => {
   };
 
   const imageStyle = {
-    width: "100%%", // Takes up 100% of the mediaContainer
+    width: "100%", // Takes up 100% of the mediaContainer
     height: "100%",
     objectFit: "contain",
     zIndex: 2,
@@ -126,7 +126,11 @@ const HomePage = () => {
         <div style={textContainerStyle}>
           <h1 style={h1Style}>{t("homeContents.slideTitle1")}</h1>
           <h2 style={h2Style}>{t("homeContents.slideContents1")}</h2>
-          <img src="../dist/images/vene.jpg" style={imageStyle} alt="Vene" />
+          <img
+            src="../dist/images/vene.jpg"
+            style={{ ...imageStyle, maxHeight: "50vh" }}
+            alt="Vene"
+          />
           <h2 style={h2Style}>{t("homeContents.slideContents2")}</h2>
         </div>
       </section>
