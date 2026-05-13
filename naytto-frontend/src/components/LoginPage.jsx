@@ -40,7 +40,7 @@ const bloginput = {
 };
 const btnstyle = {
   height: "4vh",
-  fontSize: "0.8em"
+  fontSize: "0.8em",
 };
 
 const errormsg = {
@@ -88,10 +88,25 @@ const LoginPage = () => {
         setErrorMessage(null);
       }, 5000);
     }
+
+    const [isMobile, setIsMobile] = useState(window.innerWidth < 1024);
+
+    useEffect(() => {
+      const handleResize = () => setIsMobile(window.innerWidth < 1024);
+      window.addEventListener("resize", handleResize);
+      return () => window.removeEventListener("resize", handleResize);
+    }, []);
   };
   const loginForm = () => (
     <form onSubmit={handleLogin}>
-      <div style={{ ...grid, marginTop: "30vh" }}>
+      <div
+        style={{
+          ...grid,
+          marginTop: "39vh",
+          backgroundColor: "white",
+          marginBottom: "39vh",
+        }}
+      >
         <div>
           <label>
             username
@@ -119,17 +134,22 @@ const LoginPage = () => {
     </form>
   );
   const adminpage = () => (
-    <div style={grid}>
+    <div style={{ ...grid, backgroundColor: "white", marginTop: "10vh" }}>
       <h2>Kirjauduttu järjestelmänvalvojana</h2>
-        <div><button style={btnstyle} onClick={() => logout()}>Kirjaudu ulos</button>
-        <button style={btnstyle} onClick={() => getallblogs()}>Päivitä sivu</button>
+      <div>
+        <button style={btnstyle} onClick={() => logout()}>
+          Kirjaudu ulos
+        </button>
+        <button style={btnstyle} onClick={() => getallblogs()}>
+          Päivitä sivu
+        </button>
       </div>
-      
+
       <Togglable buttonLabel="Uusi Blogi">{newblogform()}</Togglable>
       <div>
         <h1>blogit</h1>
       </div>
-      <div style={grid}>
+      <div style={{ ...grid, backgroundColor: "white", marginBottom: "25vh" }}>
         {blogs.map((blog) => (
           <Blog key={blog.id} blog={blog} />
         ))}
@@ -139,7 +159,7 @@ const LoginPage = () => {
 
   const newblogform = () => (
     <form onSubmit={addBlog}>
-      <div style={grid}>
+      <div style={{ ...grid, backgroundColor: "white" }}>
         <h3>Päivämäärä</h3>
         <input
           style={bigger}
@@ -154,7 +174,9 @@ const LoginPage = () => {
           value={blogtext}
           onChange={({ target }) => setBlogtext(target.value)}
         />
-        <button style={btnstyle} type="submit">Julkaise</button>
+        <button style={btnstyle} type="submit">
+          Julkaise
+        </button>
       </div>
     </form>
   );

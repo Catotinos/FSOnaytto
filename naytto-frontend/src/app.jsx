@@ -34,7 +34,7 @@ const App = () => {
     backgroundColor: "rgba(0, 0, 0, 0.95)",
     display: "flex",
     flexDirection: "row",
-    alightItems: "center",
+    alignItems: "center",
     justifyContent: "space-between",
     padding: isMobile ? "0 10px" : "0 40px",
     boxSizing: "border-box",
@@ -85,6 +85,7 @@ const App = () => {
                   background: "#111",
                   display: "flex",
                   flexDirection: "column",
+                  alignItems: "center",
                   zIndex: 2000,
                   padding: "10px 0",
                   boxShadow: "0 2px 8px rgba(0,0,0,0.3)",
@@ -128,6 +129,12 @@ const App = () => {
                 marginLeft: "auto",
               }}
             >
+              <img
+                src="../dist/images/funnyfishinginfinland_logo_white.png"
+                style={{
+                  height: "60px", // Scale up appropriately for mobile layouts
+                }}
+              />
               <NavLink
                 to="https://www.tiktok.com/@funnyfishinginfinland"
                 isMobile={isMobile}
@@ -181,16 +188,28 @@ const App = () => {
             </div>
             <div
               style={{
+                position: "absolute",
+                left: "50%",
+                transform: "translateX(-50%)",
+                display: "flex",
+                alignItems: "center",
+              }}
+            >
+              <img
+                src="../dist/images/funnyfishinginfinland_logo_white.png"
+                style={{
+                  height: "90px",
+                  zIndex: 1001,
+                }}
+              ></img>
+            </div>
+            <div
+              style={{
                 display: "flex",
                 alignItems: "center",
                 gap: "15px",
               }}
             >
-              <img
-                src="../dist/images/tralalero.png"
-                style={{ width: "50px", height: "50px" }}
-                alt="Logo"
-              />
               <NavLink
                 to="https://www.tiktok.com/@funnyfishinginfinland"
                 isMobile={isMobile}
@@ -213,6 +232,7 @@ const App = () => {
                   cursor: "pointer",
                   fontSize: "12px",
                   marginLeft: "5px",
+                  marginRight: "5px",
                 }}
                 onClick={() => switchLanguage(lang === "fi" ? "en" : "fi")}
               >

@@ -40,13 +40,13 @@ const HomePage = () => {
   });
 
   const mediaContainer1 = {
-    position: "relative",
+    position: isMobile ? "absolute" : "absolute",
     width: "100%",
     height: "100%",
     display: "flex",
-    flexDirection: "column",
-    justifyContent: "center",
-    alignItems: "center",
+    top: isMobile ? "30px" : "45px",
+    right: isMobile ? "0px" : "15px",
+    justifyContent: isMobile ? "center" : "end",
   };
 
   const textContainerStyle = {
@@ -105,17 +105,24 @@ const HomePage = () => {
           <video
             ref={videoRef}
             src="../dist/videos/Nettipätkä.mp4"
-            style={videoStyle}
+            style={{ ...videoStyle, pointerEvents: "none" }}
             autoPlay
             muted
             loop
             playsInline
+            disablePictureInPicture
+            disableRemotePlayback
+            onContextMenu={(e) => e.preventDefault()}
           />
         }
         <div style={{ ...mediaContainer1, zIndex: 2 }}>
           <img
             src="../dist/images/funnyfishinginfinland_primarylogo.png"
-            style={{ ...imageStyle, maxHeight: "50vh" }}
+            style={{
+              height: isMobile ? "240px" : "250px",
+              width: "auto",
+              opacity: "0.9",
+            }}
             alt="Slide 1"
           />
         </div>
