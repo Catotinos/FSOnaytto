@@ -32,6 +32,8 @@ const QuestionnairePage = () => {
     userSelect: "none",
     WebkitUserSelect: "none",
     msUserSelect: "none",
+    position: "relative",
+    color: "white"
   };
 
   const formStyle = {
@@ -40,6 +42,7 @@ const QuestionnairePage = () => {
     gap: "20px",
     width: "100%",
     maxWidth: "600px",
+    
   };
 
   const inputGroup1 = {
@@ -72,6 +75,13 @@ const QuestionnairePage = () => {
     boxSizing: "border-box",
     borderRadius: "4px",
     border: "1px solid #ccc",
+  };
+  const bgStyle = {
+    background: "url(../dist/images/questionairebg.jpg)",
+    width: "100vw",
+    height:"100vh",
+    position: "fixed",
+    opacity: "0.5",
   };
 
   const addQuestionnaire = (event) => {
@@ -134,8 +144,10 @@ const QuestionnairePage = () => {
   const { t } = useLang();
 
   return (
-    <>
-      <div style={{ ...mainDiv, backgroundColor: "white" }}>
+    <div>
+      <div style={bgStyle}>
+        </div>
+      <div style={{ ...mainDiv}}>
         {/* <div> */}
         {/* Contacts can be found here */}
         {/* <h1>{t("contactsTitle")}</h1> */}
@@ -279,7 +291,7 @@ const QuestionnairePage = () => {
           </Form>
         </div>
       </div>
-    </>
+    </div> 
   );
 };
 
