@@ -50,8 +50,14 @@ const App = () => {
     location.pathname === "/" ? "0px" : isMobile ? "60px" : "80px";
 
   return (
-    <div style={{ width: "100%" }}>
-
+    <div
+      style={{
+        width: "100%",
+        userSelect: "none",
+        WebkitUserSelect: "none",
+        msUserSelect: "none",
+      }}
+    >
       <div style={headerStyle}>
         {isMobile ? (
           <>
@@ -84,16 +90,32 @@ const App = () => {
                   boxShadow: "0 2px 8px rgba(0,0,0,0.3)",
                 }}
               >
-                <NavLink to="/" isMobile={isMobile} onClick={() => setMenuOpen(false)}>
+                <NavLink
+                  to="/"
+                  isMobile={isMobile}
+                  onClick={() => setMenuOpen(false)}
+                >
                   {t("navHome")}
                 </NavLink>
-                <NavLink to="/blogs" isMobile={isMobile} onClick={() => setMenuOpen(false)}>
+                <NavLink
+                  to="/blogs"
+                  isMobile={isMobile}
+                  onClick={() => setMenuOpen(false)}
+                >
                   {t("navBlogs")}
                 </NavLink>
-                <NavLink to="/questionnaire" isMobile={isMobile} onClick={() => setMenuOpen(false)}>
+                <NavLink
+                  to="/questionnaire"
+                  isMobile={isMobile}
+                  onClick={() => setMenuOpen(false)}
+                >
                   {t("formTitle")}
                 </NavLink>
-                <NavLink to="/login" isMobile={isMobile} onClick={() => setMenuOpen(false)}>
+                <NavLink
+                  to="/login"
+                  isMobile={isMobile}
+                  onClick={() => setMenuOpen(false)}
+                >
                   {t("navLogin")}
                 </NavLink>
               </div>

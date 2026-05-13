@@ -136,136 +136,148 @@ const QuestionnairePage = () => {
   return (
     <>
       <div style={{ ...mainDiv, backgroundColor: "white" }}>
-        <h1>{t("formTitle")}</h1>
-        <Form onSubmit={addQuestionnaire} style={formStyle}>
-          {/* Radio Group */}
-          <div style={{ ...inputGroup1 }}>
-            <label style={{ display: "flex", gap: "5px" }}>
-              <input
-                type="radio"
-                name="topic"
-                value="1"
-                checked={topic === "1"}
-                onChange={(e) => setTopic(e.target.value)}
-              />{" "}
-              {t("formContents.option1")}
-            </label>
-            <label style={{ display: "flex", gap: "5px" }}>
-              <input
-                type="radio"
-                name="topic"
-                value="2"
-                checked={topic === "2"}
-                onChange={(e) => setTopic(e.target.value)}
-              />{" "}
-              {t("formContents.option2")}
-            </label>
-            <label style={{ display: "flex", gap: "5px" }}>
-              <input
-                type="radio"
-                name="topic"
-                value="3"
-                checked={topic === "3"}
-                onChange={(e) => setTopic(e.target.value)}
-              />{" "}
-              {t("formContents.option3")}
-              <br />
-              {t("formContents.option3part2")}
-            </label>
-          </div>
+        {/* <div> */}
+        {/* Contacts can be found here */}
+        {/* <h1>{t("contactsTitle")}</h1> */}
+        {/* </div> */}
+        <div>
+          {" "}
+          {/* Form starts here */}
+          <h1>{t("formTitle")}</h1>
+          <Form onSubmit={addQuestionnaire} style={formStyle}>
+            {/* Radio Group */}
+            <div style={{ ...inputGroup1 }}>
+              <label style={{ display: "flex", gap: "5px" }}>
+                <input
+                  type="radio"
+                  name="topic"
+                  value="1"
+                  checked={topic === "1"}
+                  onChange={(e) => setTopic(e.target.value)}
+                />{" "}
+                {t("formContents.option1")}
+              </label>
+              <label style={{ display: "flex", gap: "5px" }}>
+                <input
+                  type="radio"
+                  name="topic"
+                  value="2"
+                  checked={topic === "2"}
+                  onChange={(e) => setTopic(e.target.value)}
+                />{" "}
+                {t("formContents.option2")}
+              </label>
+              <label style={{ display: "flex", gap: "5px" }}>
+                <input
+                  type="radio"
+                  name="topic"
+                  value="3"
+                  checked={topic === "3"}
+                  onChange={(e) => setTopic(e.target.value)}
+                />{" "}
+                {t("formContents.option3")}
+                <br />
+                {t("formContents.option3part2")}
+              </label>
+            </div>
 
-          {/* Question Area */}
-          <div style={inputGroup2}>
-            <label htmlFor="question">{t("formContents.questionBox")}</label>
-            <textarea
-              id="question"
-              style={{ ...inputStyle, minHeight: "100px", resize: "vertical" }}
-              value={question}
-              onChange={(e) => setQuestion(e.target.value)}
-            />
-          </div>
-          {/* Name Row */}
-          <div style={rowLayout}>
-            <div style={{ ...inputGroup2, flex: "1 1 250px" }}>
-              <label>{t("formContents.firstName")}</label>
-              <input
-                type="text"
-                style={{ ...inputStyle }}
-                value={firstName}
-                onChange={(e) => setFirstName(e.target.value)}
+            {/* Question Area */}
+            <div style={inputGroup2}>
+              <label htmlFor="question">{t("formContents.questionBox")}</label>
+              <textarea
+                id="question"
+                style={{
+                  ...inputStyle,
+                  minHeight: "100px",
+                  resize: "vertical",
+                }}
+                value={question}
+                onChange={(e) => setQuestion(e.target.value)}
               />
             </div>
-            <div style={{ ...inputGroup2, flex: "1 1 250px" }}>
-              <label>{t("formContents.lastName")}</label>
-              <input
-                type="text"
-                style={{ ...inputStyle }}
-                value={lastName}
-                onChange={(e) => setLastName(e.target.value)}
-              />
+            {/* Name Row */}
+            <div style={rowLayout}>
+              <div style={{ ...inputGroup2, flex: "1 1 250px" }}>
+                <label>{t("formContents.firstName")}</label>
+                <input
+                  type="text"
+                  style={{ ...inputStyle }}
+                  value={firstName}
+                  onChange={(e) => setFirstName(e.target.value)}
+                />
+              </div>
+              <div style={{ ...inputGroup2, flex: "1 1 250px" }}>
+                <label>{t("formContents.lastName")}</label>
+                <input
+                  type="text"
+                  style={{ ...inputStyle }}
+                  value={lastName}
+                  onChange={(e) => setLastName(e.target.value)}
+                />
+              </div>
             </div>
-          </div>
-          {/* Contact Row */}
-          <div style={rowLayout}>
-            <div style={{ ...inputGroup2, flex: "1 1 250px" }}>
-              <label>{t("formContents.phoneNumber")}</label>
-              <input
-                type="tel"
-                style={{ ...inputStyle }}
-                value={phoneNumber}
-                onChange={(e) => setPhoneNumber(e.target.value)}
-              />
+            {/* Contact Row */}
+            <div style={rowLayout}>
+              <div style={{ ...inputGroup2, flex: "1 1 250px" }}>
+                <label>{t("formContents.phoneNumber")}</label>
+                <input
+                  type="tel"
+                  style={{ ...inputStyle }}
+                  value={phoneNumber}
+                  onChange={(e) => setPhoneNumber(e.target.value)}
+                />
+              </div>
+              <div style={{ ...inputGroup2, flex: "1 1 250px" }}>
+                <label>{t("formContents.email")}</label>
+                <input
+                  type="email"
+                  style={{ ...inputStyle }}
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)}
+                />
+              </div>
             </div>
-            <div style={{ ...inputGroup2, flex: "1 1 250px" }}>
-              <label>{t("formContents.email")}</label>
-              <input
-                type="email"
-                style={{ ...inputStyle }}
-                value={email}
-                onChange={(e) => setEmail(e.target.value)}
-              />
-            </div>
-          </div>
-          {/* Agreement */}
-          <div
-            style={{
-              borderTop: "1px solid #ccc",
-              paddingTop: "15px",
-              width: "100%",
-            }}
-          >
-            <p style={{ fontSize: "14px", lineHeight: "1.4" }}>
-              {t("formContents.consentText")}
-            </p>
-            <label
+            {/* Agreement */}
+            <div
               style={{
-                display: "flex",
-                alignItems: "center",
-                gap: "10px",
-                cursor: "pointer",
+                borderTop: "1px solid #ccc",
+                paddingTop: "15px",
+                width: "100%",
               }}
             >
-              <input
-                type="checkbox"
-                checked={agreement}
-                onChange={(e) => setAgreement(e.target.checked)}
-              />
-              {t("formContents.consentBox")}
-            </label>
-          </div>
-          <button
-            type="submit"
-            style={{
-              ...inputStyle,
-              backgroundColor: "#007bff",
-              color: "white",
-              cursor: "pointer",
-              fontWeight: "bold",
-            }}
-          >
-            {t("formContents.submit")}
-          </button>
-        </Form>
+              <p style={{ fontSize: "14px", lineHeight: "1.4" }}>
+                {t("formContents.consentText")}
+              </p>
+              <label
+                style={{
+                  display: "flex",
+                  alignItems: "center",
+                  gap: "10px",
+                  cursor: "pointer",
+                }}
+              >
+                <input
+                  type="checkbox"
+                  checked={agreement}
+                  onChange={(e) => setAgreement(e.target.checked)}
+                />
+                {t("formContents.consentBox")}
+              </label>
+            </div>
+            <button
+              type="submit"
+              style={{
+                ...inputStyle,
+                backgroundColor: "#007bff",
+                color: "white",
+                cursor: "pointer",
+                fontWeight: "bold",
+              }}
+            >
+              {t("formContents.submit")}
+            </button>
+          </Form>
+        </div>
       </div>
     </>
   );

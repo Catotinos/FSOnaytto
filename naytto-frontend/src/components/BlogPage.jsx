@@ -31,17 +31,32 @@ const BlogsPage = () => {
 
   const { t } = useLang();
 
+  const mainDiv = {
+    minHeight: "100vh",
+    width: "100%",
+    display: "flex",
+    flexDirection: "column",
+    alignItems: "center",
+    padding: "20px",
+    boxSizing: "border-box",
+    backgroundColor: "#ffffff",
+    userSelect: "none",
+    WebkitUserSelect: "none",
+    msUserSelect: "none",
+  };
+
   return (
-    <div style={{ backgroundColor: "white" }}>
+    <div style={{ ...mainDiv }}>
       <div style={{ position: "relative", zIndex: 1 }}>
         <h1 style={{ color: "black", textAlign: "center" }}>Blogit</h1>
 
-        <div style={{ margin: "40px auto", maxWidth: 600 }}>
+        <div style={{ margin: "10px auto", maxWidth: 600 }}>
           {blogPosts.map((post, idx) => (
             <div
               key={idx}
               style={{
-                background: "#fff",
+                background: "#d3d3d3b4",
+                border: "1px solid black",
                 borderRadius: 8,
                 boxShadow: "0 2px 8px rgba(0,0,0,0.1)",
                 marginBottom: 32,

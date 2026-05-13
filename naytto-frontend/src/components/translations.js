@@ -25,6 +25,7 @@ export const translations = {
       blog1: "Esimerkki esimerkki blablablaa",
     },
     navLogin: "Kirjaudu sisään",
+    contactsTitle: "Yhteystiedot",
     formTitle: "Kyselylomake",
     formContents: {
       option1: "Kalastus",
@@ -68,6 +69,7 @@ export const translations = {
       blog1: "Example example blablablaa",
     },
     navLogin: "Sign in",
+    contactsTitle: "Contacts",
     formTitle: "Questionnaire",
     formContents: {
       option1: "Fishing",
