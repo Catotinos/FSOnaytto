@@ -49,7 +49,14 @@ const App = () => {
     location.pathname === "/" ? "0px" : isMobile ? "60px" : "80px";
 
   return (
-    <div style={{ width: "100%" }}>
+    <div
+      style={{
+        width: "100%",
+        userSelect: "none",
+        WebkitUserSelect: "none",
+        msUserSelect: "none",
+      }}
+    >
       <div style={headerStyle}>
         <div
           style={{
@@ -79,10 +86,6 @@ const App = () => {
             gap: isMobile ? "5px" : "15px",
           }}
         >
-          <img
-            src="../dist/images/tralalero.png"
-            style={{ width: "50px", height: "50px" }}
-          ></img>
           <NavLink
             to="https://www.tiktok.com/@funnyfishinginfinland"
             isMobile={isMobile}
