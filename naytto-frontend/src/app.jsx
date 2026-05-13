@@ -10,6 +10,7 @@ import { Routes, Route, useLocation } from "react-router-dom";
 
 const App = () => {
   const [isMobile, setIsMobile] = useState(window.innerWidth < 1024);
+  const [menuOpen, setMenuOpen] = useState(false);
 
   useEffect(() => {
     const handleResize = () => setIsMobile(window.innerWidth < 1024);
@@ -58,62 +59,168 @@ const App = () => {
       }}
     >
       <div style={headerStyle}>
-        <div
-          style={{
-            display: "flex",
-            alignItems: "center",
-            gap: isMobile ? "5px" : "15px",
-          }}
-        >
-          <NavLink to="/" isMobile={isMobile}>
-            {t("navHome")}
-          </NavLink>
-          <NavLink to="/blogs" isMobile={isMobile}>
-            {t("navBlogs")}
-          </NavLink>
-          <NavLink to="/questionnaire" isMobile={isMobile}>
-            {t("formTitle")}
-          </NavLink>
-          <NavLink to="/login" isMobile={isMobile}>
-            {t("navLogin")}
-          </NavLink>
-        </div>
-
-        <div
-          style={{
-            display: "flex",
-            alignItems: "center",
-            gap: isMobile ? "5px" : "15px",
-          }}
-        >
-          <NavLink
-            to="https://www.tiktok.com/@funnyfishinginfinland"
-            isMobile={isMobile}
-          >
-            TikTok
-          </NavLink>
-          <NavLink
-            to="https://www.instagram.com/funnyfishinginfinland"
-            isMobile={isMobile}
-          >
-            Instagram
-          </NavLink>
-          <button
-            style={{
-              backgroundColor: "transparent",
-              color: "white",
-              border: "1px solid white",
-              borderRadius: "4px",
-              padding: isMobile ? "4px 8px" : "8px 16px",
-              cursor: "pointer",
-              fontSize: "12px",
-              marginLeft: "5px",
-            }}
-            onClick={() => switchLanguage(lang === "fi" ? "en" : "fi")}
-          >
-            {lang === "fi" ? "EN" : "FI"}
-          </button>
-        </div>
+        {isMobile ? (
+          <>
+            <button
+              style={{
+                background: "none",
+                border: "none",
+                color: "white",
+                fontSize: "2rem",
+                cursor: "pointer",
+                zIndex: 2001,
+              }}
+              onClick={() => setMenuOpen(!menuOpen)}
+              aria-label="Open menu"
+            >
+              ☰
+            </button>
+            {menuOpen && (
+              <div
+                style={{
+                  position: "absolute",
+                  top: "60px",
+                  left: 0,
+                  width: "100vw",
+                  background: "#111",
+                  display: "flex",
+                  flexDirection: "column",
+                  zIndex: 2000,
+                  padding: "10px 0",
+                  boxShadow: "0 2px 8px rgba(0,0,0,0.3)",
+                }}
+              >
+                <NavLink
+                  to="/"
+                  isMobile={isMobile}
+                  onClick={() => setMenuOpen(false)}
+                >
+                  {t("navHome")}
+                </NavLink>
+                <NavLink
+                  to="/blogs"
+                  isMobile={isMobile}
+                  onClick={() => setMenuOpen(false)}
+                >
+                  {t("navBlogs")}
+                </NavLink>
+                <NavLink
+                  to="/questionnaire"
+                  isMobile={isMobile}
+                  onClick={() => setMenuOpen(false)}
+                >
+                  {t("formTitle")}
+                </NavLink>
+                <NavLink
+                  to="/login"
+                  isMobile={isMobile}
+                  onClick={() => setMenuOpen(false)}
+                >
+                  {t("navLogin")}
+                </NavLink>
+              </div>
+            )}
+            <div
+              style={{
+                display: "flex",
+                alignItems: "center",
+                gap: "8px",
+                marginLeft: "auto",
+              }}
+            >
+              <NavLink
+                to="https://www.tiktok.com/@funnyfishinginfinland"
+                isMobile={isMobile}
+              >
+                TikTok
+              </NavLink>
+              <NavLink
+                to="https://www.instagram.com/funnyfishinginfinland"
+                isMobile={isMobile}
+              >
+                Instagram
+              </NavLink>
+              <button
+                style={{
+                  backgroundColor: "transparent",
+                  color: "white",
+                  border: "1px solid white",
+                  borderRadius: "4px",
+                  padding: "4px 8px",
+                  cursor: "pointer",
+                  fontSize: "12px",
+                  marginLeft: "5px",
+                }}
+                onClick={() => switchLanguage(lang === "fi" ? "en" : "fi")}
+              >
+                {lang === "fi" ? "EN" : "FI"}
+              </button>
+            </div>
+          </>
+        ) : (
+          <>
+            <div
+              style={{
+                display: "flex",
+                alignItems: "center",
+                gap: "15px",
+              }}
+            >
+              <NavLink to="/" isMobile={isMobile}>
+                {t("navHome")}
+              </NavLink>
+              <NavLink to="/blogs" isMobile={isMobile}>
+                {t("navBlogs")}
+              </NavLink>
+              <NavLink to="/questionnaire" isMobile={isMobile}>
+                {t("formTitle")}
+              </NavLink>
+              <NavLink to="/login" isMobile={isMobile}>
+                {t("navLogin")}
+              </NavLink>
+            </div>
+            <div
+              style={{
+                display: "flex",
+                alignItems: "center",
+                gap: "15px",
+              }}
+            >
+              <img
+                src="../dist/images/tralalero.png"
+                style={{ width: "50px", height: "50px" }}
+                alt="Logo"
+              />
+              <NavLink
+                to="https://www.tiktok.com/@funnyfishinginfinland"
+                isMobile={isMobile}
+              >
+                TikTok
+              </NavLink>
+              <NavLink
+                to="https://www.instagram.com/funnyfishinginfinland"
+                isMobile={isMobile}
+              >
+                Instagram
+              </NavLink>
+              <button
+                style={{
+                  backgroundColor: "transparent",
+                  color: "white",
+                  border: "1px solid white",
+                  borderRadius: "4px",
+                  padding: "8px 16px",
+                  cursor: "pointer",
+                  fontSize: "12px",
+                  marginLeft: "5px",
+                }}
+                onClick={() => switchLanguage(lang === "fi" ? "en" : "fi")}
+              >
+                {lang === "fi" ? "EN" : "FI"}
+              </button>
+            </div>
+          </>
+        )}
       </div>
 
       <div style={{ width: "100%", paddingTop: contentPaddingTop }}>

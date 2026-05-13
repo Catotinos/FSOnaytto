@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
 
-const NavLink = ({ to, children, isMobile }) => {
+const NavLink = ({ to, children, isMobile, onClick }) => {
   const [isHovered, setIsHovered] = useState(false);
 
   const linkStyle = {
@@ -20,6 +20,7 @@ const NavLink = ({ to, children, isMobile }) => {
       style={linkStyle}
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
+      onClick={onClick}
     >
       {children}
     </Link>
