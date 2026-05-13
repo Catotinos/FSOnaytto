@@ -106,11 +106,6 @@ const App = () => {
                 marginLeft: "auto",
               }}
             >
-              <img
-                src="../dist/images/tralalero.png"
-                style={{ width: "40px", height: "40px" }}
-                alt="Logo"
-              />
               <NavLink
                 to="https://www.tiktok.com/@funnyfishinginfinland"
                 isMobile={isMobile}
@@ -169,11 +164,6 @@ const App = () => {
                 gap: "15px",
               }}
             >
-              <img
-                src="../dist/images/tralalero.png"
-                style={{ width: "50px", height: "50px" }}
-                alt="Logo"
-              />
               <NavLink
                 to="https://www.tiktok.com/@funnyfishinginfinland"
                 isMobile={isMobile}
