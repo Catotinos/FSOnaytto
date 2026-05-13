@@ -20,13 +20,13 @@ export const translations = {
       slideContents8:
         "Laadukas yksityinen kalastusretki kokeneen oppaan kanssa Pohjois-Karjalan vesillä.",
     },
-    navBlogs: "Blogit",
+    navBlogs: "Kalastuspäiväkirja",
     blogContents: {
       blog1: "Esimerkki esimerkki blablablaa",
     },
     navLogin: "Kirjaudu sisään",
     contactsTitle: "Yhteystiedot",
-    formTitle: "Kyselylomake",
+    formTitle: "Ota yhteyttä",
     formContents: {
       option1: "Kalastus",
       option2: "Kalastusretket",
@@ -53,7 +53,7 @@ export const translations = {
         "The boat is a Finval 555 FishPro, equipped with a 200hp outboard motor, Lowrance sonar, and ActiveTarget live transducers.",
       slideTitle2: "Fishing Guide Tero Hasa",
       slideContents3:
-        "Hi! I'm Tero, your fishing guide. I've been fishing the waters of the Finnish Lake District for years. While I’m skilled in many different techniques, my true passion is targeting specimen-sized fish using modern live sonar technology. I am constantly fascinated by fish behavior—especially how wind, temperature, and light affect their movement, and which colors and methods work best in different conditions.",
+        "Hi! I'm Tero, your fishing guide. I've been fishing the waters of the Finnish Lake District for years. While I’m skilled in many different techniques, my true passion is catching larger fish using modern live sonar technology. I am constantly fascinated by fish behavior, especially how wind, temperature, and light affect their movement, and which colors and methods work best in different conditions.",
       slideContents4:
         "Sustainable fishing is a core value for me. All oversized fish are released back into the lake to ensure fish stocks remain healthy and vibrant. I regularly compete in fishing tournaments to keep my skills sharp. Spending 50–70 days on the water annually, I truly enjoy sharing this experience and expertise with my clients.",
       slideContents5:
@@ -64,13 +64,13 @@ export const translations = {
       slideContents8:
         "High-quality private fishing trips with an experienced guide in the waters of North Karelia.",
     },
-    navBlogs: "Blogs",
+    navBlogs: "Fishing diary",
     blogContents: {
       blog1: "Example example blablablaa",
     },
     navLogin: "Sign in",
     contactsTitle: "Contacts",
-    formTitle: "Questionnaire",
+    formTitle: "Contact us",
     formContents: {
       option1: "Fishing",
       option2: "Fishing trips",

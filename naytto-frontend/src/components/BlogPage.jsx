@@ -39,16 +39,26 @@ const BlogsPage = () => {
     alignItems: "center",
     padding: "20px",
     boxSizing: "border-box",
-    backgroundColor: "#ffffff",
     userSelect: "none",
     WebkitUserSelect: "none",
     msUserSelect: "none",
+    position: "relative",
+    color: "white",
   };
-
+  const bgStyle = {
+    background: "url(../dist/images/blogbg.jpg)",
+    width: "100vw",
+    height:"100vh",
+    position: "fixed",
+    opacity: "0.5",
+  };
   return (
+    <>
+    <div style={bgStyle}>
+    </div>
     <div style={{ ...mainDiv }}>
       <div style={{ position: "relative", zIndex: 1 }}>
-        <h1 style={{ color: "black", textAlign: "center" }}>Blogit</h1>
+        <h1 style={{ textAlign: "center" }}>Kalastuspäiväkirja</h1>
 
         <div style={{ margin: "10px auto", maxWidth: 600 }}>
           {blogPosts.map((post, idx) => (
@@ -72,7 +82,7 @@ const BlogsPage = () => {
                 alt="blog"
                 style={{ width: "100%", borderRadius: 4, marginBottom: 12 }}
               />
-              <div style={{ color: "#333", textAlign: "center" }}>
+              <div style={{ color: "#ffffff", textAlign: "center" }}>
                 {idx === 0 ? t("blogContents.blog1") : post.text}{" "}
                 {/* Makes it so that the latest blog always uses the blogContents.blog1 translation */}
               </div>
@@ -81,6 +91,7 @@ const BlogsPage = () => {
         </div>
       </div>
     </div>
+  </>
   );
 };
 
